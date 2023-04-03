@@ -9,16 +9,17 @@ let operation = '';
 function calculate(operation, secondOperand){
     switch (operation) {
         case 'multiply':
-            output.textContent = Number.parseInt(firstOperand) * Number.parseInt(secondOperand)
+            output.textContent = Number.parseFloat(firstOperand) * Number.parseFloat(secondOperand)
             break;
         case 'division':
-            output.textContent = Number.parseFloat(firstOperand) / Number.parseFloat(secondOperand)
+            let result = Number.parseFloat(firstOperand) / Number.parseFloat(secondOperand)
+            output.textContent = result.toFixed(3)
             break;
         case 'plus':
-            output.textContent = Number.parseInt(firstOperand) + Number.parseInt(secondOperand)
+            output.textContent = Number.parseFloat(firstOperand) + Number.parseFloat(secondOperand)
             break;
         case 'minus':
-            output.textContent = Number.parseInt(firstOperand) - Number.parseInt(secondOperand)
+            output.textContent = Number.parseFloat(firstOperand) - Number.parseFloat(secondOperand)
             break;
         default:
             break;
@@ -48,7 +49,7 @@ keys.addEventListener('click', e => {
                 operation = 'multiply'
                 firstOperand = output.textContent
                 console.log(firstOperand)
-                output.textContent = ''
+                output.innerHTML = '&nbsp;'
                 if(!action){
                     output.textContent = '' + keyContent
                 }
@@ -57,7 +58,7 @@ keys.addEventListener('click', e => {
                 operation = 'division'
                 firstOperand = output.textContent
                 console.log(firstOperand)
-                output.textContent = ''
+                output.innerHTML = '&nbsp;'
                 if(!action){
                     output.textContent = '' + keyContent
                 }
@@ -66,7 +67,7 @@ keys.addEventListener('click', e => {
                 operation = 'plus'
                 firstOperand = output.textContent
                 console.log(firstOperand)
-                output.textContent = ''
+                output.innerHTML = '&nbsp;'
                 if(!action){
                     output.textContent = '' + keyContent
                 }
@@ -75,7 +76,7 @@ keys.addEventListener('click', e => {
                 operation = 'minus'
                 firstOperand = output.textContent
                 console.log(firstOperand)
-                output.textContent = ''
+                output.innerHTML = '&nbsp;'
                 if(!action){
                     output.textContent = '' + keyContent
                 }
@@ -86,6 +87,11 @@ keys.addEventListener('click', e => {
                 console.log(secondOperand)
                 calculate (operation, secondOperand)
                 break;
+            case 'period':
+                if(!output.textContent.includes('.')){
+                    output.textContent = output.textContent + '.'
+                }
+            break;
             default:
                 break;
         }
