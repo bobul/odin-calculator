@@ -5,15 +5,18 @@ const output = document.querySelector('.calculator__output')
 const sign = '';
 let firstOperand = '';
 let operation = '';
+let secondOperand = '';
+let result = '';
 
 function calculate(operation, secondOperand){
     switch (operation) {
         case 'multiply':
-            output.textContent = Number.parseFloat(firstOperand) * Number.parseFloat(secondOperand)
+            result = Number.parseFloat(firstOperand) * Number.parseFloat(secondOperand)
+            result % 1 != 0 ? output.textContent = result.toFixed(3) : output.textContent = result
             break;
         case 'division':
-            let result = Number.parseFloat(firstOperand) / Number.parseFloat(secondOperand)
-            output.textContent = result.toFixed(3)
+            result = Number.parseFloat(firstOperand) / Number.parseFloat(secondOperand)
+            result % 1 != 0 ? output.textContent = result.toFixed(3) : output.textContent = result
             break;
         case 'plus':
             output.textContent = Number.parseFloat(firstOperand) + Number.parseFloat(secondOperand)
@@ -82,7 +85,7 @@ keys.addEventListener('click', e => {
                 }
                 break;
             case 'calculate':
-                let secondOperand = output.textContent
+                secondOperand = output.textContent
                 console.log(operation)
                 console.log(secondOperand)
                 calculate (operation, secondOperand)
